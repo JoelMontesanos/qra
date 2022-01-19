@@ -19,9 +19,7 @@ app.set('view engine', '.hbs');
 app.use(express.urlencoded({extended: false}));
 
 //Routes
-app.get('/',(req,res)=>{
-    res.render('index');
-});
+app.use(require('./routes/index.routes'));
 
 //Global Variables
 
