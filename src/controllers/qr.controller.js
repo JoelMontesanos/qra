@@ -1,9 +1,10 @@
 const qrCtl = {};
 
 qrCtl.renderQrForm = (req, res)=>{
-    res.send('qr add')
+    res.render('qrs/new_qr');
 };
 qrCtl.createNewQr = (req,res)=>{
+    console.log(req.body);// recepción de los datos
     res.send('new qr');
 };
 qrCtl.renderQr = (req,res)=>{

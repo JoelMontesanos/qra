@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const morgan = require('morgan');
 //initialization
 const app = express();
 
@@ -16,6 +17,7 @@ app.engine('.hbs', exphbs.engine({
 app.set('view engine', '.hbs');
 
 //Middlewares
+app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 
 //Routes

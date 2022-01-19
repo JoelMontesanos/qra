@@ -10,7 +10,7 @@ const {
 
 //New Qr
 router.get('/qr/add',renderQrForm);
-router.post('/qr/add',createNewQr);
+router.post('/qr/new_qr',createNewQr);
 // Get all qr
 router.get('/qr',renderQr);
 //Edit qr
