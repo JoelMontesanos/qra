@@ -10,7 +10,8 @@
                     <p>{{auto}}</p>
                     <p>{{placas}}</p>
                     <p>{{motiva}}</p>
-                    <form action="/qr/delete/{{_id}}" method="POST">
+                    <form action="/qr/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="btn btn-danger btn-block btn-sm"> Borrar </button>
                     </form>
                 </div>

@@ -10,7 +10,7 @@ qrCtl.createNewQr = async (req,res)=> {
     await newQr.save();
     console.log(newQr);
     //console.log(req.body);// recepción de los datos, se encuentran en req.body
-    res.send('new qr');
+    res.redirect('/qr');
 };
 qrCtl.renderQr = async (req,res)=>{ // To get all qr 
     const qrs = await Qr.find().lean();
@@ -23,7 +23,8 @@ qrCtl.renderEditQr = (req,res)=>{
 qrCtl.upDateQr = (req,res) => {
     res.send('updated qr');
 };
-qrCtl.deleteQr = (req,res)=>{
-    res.send('deleted qr');
+qrCtl.deleteQr = async (req,res)=>{
+    await Qr.findByIdAndDelete(req.params.id);
+    res.redirect('/qr');
 }
 module.exports = qrCtl;
