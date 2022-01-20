@@ -11,4 +11,4 @@ const qrSchema = new Schema ({
     validez:{type:Date, required:true},
 },{timestamps:true});
 
-module.exports = model('qrModel',qrModel);
+module.exports = model('qrModel',qrSchema,'Alenas');
