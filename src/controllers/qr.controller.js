@@ -17,11 +17,16 @@ qrCtl.renderQr = async (req,res)=>{ // To get all qr
     res.render('qrs/all_qr',{qrs});
     //res.send('all qrs');
 };
-qrCtl.renderEditQr = (req,res)=>{
-    res.send('render edit form');
+qrCtl.renderEditQr = async (req,res)=>{
+    const qr = await Qr.findById(req.params.id).lean();
+    console.log(qr);
+    res.render('qrs/edit_qr', {qr});
 };
-qrCtl.upDateQr = (req,res) => {
-    res.send('updated qr');
+qrCtl.updateQr = async (req,res) => {
+    //destructuring
+    const {nombre,ine,auto,placas,casaVisita,motivo,validez} = req.body
+    await Qr.findByIdAndUpdate(req.params.id, {nombre,ine,auto,placas,casaVisita,motivo,validez});
+    res.redirect('/qr');
 };
 qrCtl.deleteQr = async (req,res)=>{
     await Qr.findByIdAndDelete(req.params.id);
