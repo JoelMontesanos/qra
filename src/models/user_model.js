@@ -2,11 +2,11 @@ const {Schema, model} = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new Schema({
-    nombre:{type:String,required:true},
-    password:{type:String, required:true},
-    casa:{type:String,required: true},
-    telefono: {type:Number, required: true},
+    name:{type:String,required:true},
+    home:{type:String,required: true},
+    phone: {type:Number, required: true},
     mail:{type:String,requred:true},
+    password:{type:String, required:true},
 },{timestamps:true});
 
 
@@ -19,4 +19,4 @@ userSchema.methods.matchPasswords = async function (password){
     return await bcrypt.compare(password,this.password);
 }
 
-module.exports = model('userModel',userSchema);
+module.exports = model('User',userSchema);
