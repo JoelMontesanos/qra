@@ -1,27 +1,34 @@
-<div class="col-md-4 mx-auto">
-    <div class="card text-center">
-        <div class="card-header">
-            <h3>New qr</h3>
+<div class="col-md-6 mx-auto">
+    <div class="card text-center shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Nuevo QR</h3>
         </div>
         <div class="card-body">
             <form action="/qr/new_qr" method="POST">
-                <div class="form-group">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre" autofocus>
                 </div>
-                <div class="form-group">
-                    <input type="number" name="ine" class="form-control" placeholder="Número INE"><br>
-                    <input type="text" name="auto" class="form-control" placeholder="Auto"><br>
-                    <input type="text" name="placas" class="form-control" placeholder="Número de placas"><br>
-                    <input type="number" name="casaVisita" class="form-control" placeholder="Casa a visitar"><br>
-                    <input type="text" name="motivo" class="form-control" placeholder="Motivo de la Visita"><br>
-                    <label for="validez">Fecha y hora de la visita</label>
-                    <input type="datetime-local" name="validez" class="form-control" >
+                <div class="mb-3">
+                    <input type="number" name="ine" class="form-control" placeholder="Número INE">
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary btn-block">
-                        Generar codigo
-                    </button>
+                <div class="mb-3">
+                    <input type="text" name="auto" class="form-control" placeholder="Auto">
                 </div>
+                <div class="mb-3">
+                    <input type="text" name="placas" class="form-control" placeholder="Número de placas">
+                </div>
+                <div class="mb-3">
+                    <input type="number" name="casaVisita" class="form-control" placeholder="Casa a visitar">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="motivo" class="form-control" placeholder="Motivo de la Visita">
+                </div>
+                <div class="mb-3">
+                    <label for="validez" class="form-label">Fecha y hora de la visita</label>
+                    <input type="datetime-local" name="validez" class="form-control">
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">Generar código</button>
             </form>
         </div>
     </div>

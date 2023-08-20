@@ -36,6 +36,7 @@ app.use(flash());
 //Routes
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/qr.routes'));
+app.use(require('./routes/users'));
 
 //Global Variables
 app.use((req,res,next)=>{

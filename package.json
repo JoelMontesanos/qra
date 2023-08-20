@@ -20,7 +20,8 @@
     "mongoose": "^6.1.7",
     "morgan": "^1.10.0",
     "passport": "^0.5.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "qrcode": "^1.5.3"
   },
   "devDependencies": {
     "dotenv": "^14.2.0",

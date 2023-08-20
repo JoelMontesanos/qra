@@ -9,6 +9,7 @@ const qrSchema = new Schema ({
     casaVisita:{type: Number, required:true},
     motivo:{type:String, required:true},
     validez:{type:Date, required:true},
+    qrCodeURL: { type: String, required: true }
 },{timestamps:true});
 
 module.exports = model('qrModel',qrSchema,'Alenas');

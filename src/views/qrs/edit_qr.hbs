@@ -1,31 +1,38 @@
-<div class="row">
-    <div class="col-md4 mx-auto">
-    <div class="card">
-        <div class="card-header">
-            <h3>Edit Qr</h3>
-        </div>
-        <div class="card-body">
-            <form action="/qr/edit/{{qr._id}}?_method=PUT" method="POST">
-            <input type="hidden" name="_method" value="PUT">
-                <div class="form-group">
-                    <input type="text" name="nombre" class="form-control" value="{{qr.nombre}}">
-                </div>
-                <div class="form-group">
-                    <input type="number" name="ine" class="form-control" placeholder="Número INE" value="{{qr.ine}}"><br>
-                    <input type="text" name="auto" class="form-control" placeholder="Auto" value="{{qr.auto}}"><br>
-                    <input type="text" name="placas" class="form-control" placeholder="Número de placas" value="{{qr.placas}}"><br>
-                    <input type="number" name="casaVisita" class="form-control" placeholder="Casa a visitar" value="{{qr.casaVisita}}"><br>
-                    <input type="text" name="motivo" class="form-control" placeholder="Motivo de la Visita" value="{{qr.motivo}}"><br>
-                    <label for="validez">Fecha y hora de la visita</label>
-                    <input type="datetime-local" name="validez" class="form-control" value="{{qr.validez}}">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit">
-                        Guardar
-                    </button>
-                </div>
-            </form>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Editar QR</h3>
+            </div>
+            <div class="card-body">
+                <form action="/qr/edit/{{qr._id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" name="nombre" class="form-control" value="{{qr.nombre}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="ine" class="form-control" placeholder="Número INE" value="{{qr.ine}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="auto" class="form-control" placeholder="Auto" value="{{qr.auto}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="placas" class="form-control" placeholder="Número de placas" value="{{qr.placas}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" name="casaVisita" class="form-control" placeholder="Casa a visitar" value="{{qr.casaVisita}}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="motivo" class="form-control" placeholder="Motivo de la Visita" value="{{qr.motivo}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="validez" class="form-label">Fecha y hora de la visita</label>
+                        <input type="datetime-local" name="validez" class="form-control" value="{{qr.validez}}">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Guardar</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </div>

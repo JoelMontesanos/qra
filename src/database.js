@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const {QRA_MONGODB_HOST,
     QRA_MONGODB_DATABASE} = process.env;
 
-const MONGODB_URI = `mongodb://${QRA_MONGODB_HOST}/${QRA_MONGODB_DATABASE}`;
+//const MONGODB_URI = `mongodb://${QRA_MONGODB_HOST}/${QRA_MONGODB_DATABASE}`;
+const MONGODB_URI = `mongodb://127.0.0.1:27017/qr `
 
 mongoose.connect(MONGODB_URI,{
     useUnifiedTopology: true,
