@@ -6,6 +6,8 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
 const { renderQrForm } = require('./controllers/qr.controller');
+const passport = require('passport');
+require ('./config/passport');
 
 //initialization
 const app = express();
@@ -30,19 +32,26 @@ app.use(session({
     resave:true,
     saveUninitialized: true,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
+//Global Variables
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
+    console.log('Este es req.user: '+req.user);
+  next();
+  });
 
 //Routes
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/qr.routes'));
 app.use(require('./routes/users'));
 
-//Global Variables
-app.use((req,res,next)=>{
-    res.locals.success_message = req.flash('success_message');
-    next();
-});
+
 
 
 //Static files

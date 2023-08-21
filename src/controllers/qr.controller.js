@@ -13,6 +13,7 @@ qrCtl.createNewQr = async (req,res)=> {
     try{
         const newQr = new Qr({nombre,ine,auto,placas,casaVisita,motivo,validez,qrCodeURL: qrCodeDataURL});
         console.log('this is: '+ qrCodeDataURL);
+        newQr.user = req.user.id;
         await newQr.save();
         // Message
         req.flash('success_message', 'Código Qr agregado satisfactoriamente');
@@ -26,7 +27,7 @@ qrCtl.createNewQr = async (req,res)=> {
 };
 
 qrCtl.renderQr = async (req,res)=>{ // To get all qr 
-    const qrs = await Qr.find().lean();
+    const qrs = await Qr.find({user: req.user.id}).lean();
     res.render('qrs/all_qr',{qrs});
     //res.send('all qrs');
 };
