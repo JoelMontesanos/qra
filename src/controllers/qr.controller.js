@@ -14,9 +14,9 @@ qrCtl.createNewQr = async (req, res) => {
     const qrData = JSON.stringify({ nombre, ine, auto, placas, casaVisita, motivo, validez });
 
     // Generar una clave segura de 32 bytes (256 bits) para AES-256
-    const key = crypto.randomBytes(32);
+    const key = Buffer.from('12345678901234567890123456789012');
     // Generar un IV (Initialization Vector) seguro de 16 bytes
-    const iv = crypto.randomBytes(16);
+    const iv = Buffer.from('abcdefghijklmnop');
 
     // Crear un objeto de cifrado usando el algoritmo AES-256-CBC
     const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
