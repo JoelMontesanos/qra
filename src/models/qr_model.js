@@ -13,4 +13,4 @@ const qrSchema = new Schema ({
     user:{type: String}
 },{timestamps:true});
 
-module.exports = model('qrModel',qrSchema,'Alenas');
+module.exports = model('qrModel',qrSchema,'Alenas');//Cambiar el nombre de la BD por el nombre del fraccionamiento
