@@ -8,15 +8,8 @@ services:
     restart: always
     ports:
       - 4000:4000
-    links:
-      - mongo
-    volumes:
-      - .:/qra # Asegúrate de que el punto se refiere al directorio raíz del proyecto
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/qr
+      - MONGODB_URI=mongodb://host.docker.internal:27017/qr # Se utiliza host.docker.internal para acceder al sistema host
       - PORT=4000
       - NODE_ENV=development
     command: /bin/sh -c 'npm install && npm run dev'
-
-volumes:
-  volumedemo:
