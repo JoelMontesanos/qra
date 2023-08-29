@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
-const {QRA_MONGODB_HOST,
-    QRA_MONGODB_DATABASE} = process.env;
+const { QRA_MONGODB_HOST, QRA_MONGODB_DATABASE } = process.env;
 
-//const MONGODB_URI = `mongodb://${QRA_MONGODB_HOST}/${QRA_MONGODB_DATABASE}`;
-const MONGODB_URI = `mongodb://mongo:27017/qr`;
+// Actualiza la URI para conectarte a MongoDB en la instancia del sistema
+const MONGODB_URI = `mongodb://localhost:27017/${QRA_MONGODB_DATABASE}`;
 
-mongoose.connect(MONGODB_URI,{
+mongoose.connect(MONGODB_URI, {
     useUnifiedTopology: true,
-    useNewUrlParser:true,
+    useNewUrlParser: true,
 })
-.then(db => console.log('Database is connected'))
-.catch(err => console.log(err));
+    .then(db => console.log('Database is connected'))
+    .catch(err => console.log(err));
