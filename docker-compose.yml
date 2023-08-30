@@ -11,9 +11,9 @@ services:
     links:
       - mongo
     volumes:
-      - .:/qra # Asegúrate de que el punto se refiere al directorio raíz del proyecto
+      - .:/qra
     environment:
-      - MONGODB_URI=`mongodb://mongo:27017/qr
+      - MONGODB_URI=mongodb://joelMontesanos:McBeth5!@mongo:27017/qr # Cambia esto a tus credenciales
       - PORT=4000
       - NODE_ENV=development
     command: /bin/sh -c 'npm install && npm run dev'
@@ -22,6 +22,9 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=joelMontesanos 
+      - MONGO_INITDB_ROOT_PASSWORD=McBeth5! 
     logging:
       driver: none
     volumes:
