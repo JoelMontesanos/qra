@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/qra
     environment:
-      - MONGODB_URI=mongodb://joelMontesanos:McBeth5!@mongo:27017/qr # Cambia esto a tus credenciales
+      - MONGODB_URI=mongodb://mongo:27017/qr
       - PORT=4000
       - NODE_ENV=development
     command: /bin/sh -c 'npm install && npm run dev'
