@@ -1,17 +1,19 @@
 version: '3.8'
 services:
   web:
-    container_name: demo
-    restart: always
+    container_name: web
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
     ports:
       - 4000:4000
+    links:
+      - mongo
     volumes:
       - .:/qra
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/qr 
+      - MONGODB_URI=mongodb://mongo:27017/qr
       - PORT=4000
       - NODE_ENV=development
     command: /bin/sh -c 'npm install && npm run dev'
