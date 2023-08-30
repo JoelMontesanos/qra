@@ -1,19 +1,17 @@
 version: '3.8'
 services:
   web:
-    container_name: web
+    container_name: demo
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
-    restart: always
     ports:
       - 4000:4000
-    links:
-      - mongo
     volumes:
       - .:/qra
     environment:
-      - MONGODB_URI=mongodb://joelMontesanos:McBeth5!@mongo:27017/qr # Cambia esto a tus credenciales
+      - MONGODB_URI=mongodb://mongo:27017/qr 
       - PORT=4000
       - NODE_ENV=development
     command: /bin/sh -c 'npm install && npm run dev'
@@ -22,13 +20,9 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=joelMontesanos 
-      - MONGO_INITDB_ROOT_PASSWORD=McBeth5! 
     logging:
       driver: none
     volumes:
       - volumedemo:/data/db
-
 volumes:
   volumedemo:
