@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGODB_URI = 'mongodb://mongo:27017';
+const MONGODB_URI = 'mongodb://mongo:cE4H32fC3Hfb2CCe1d4CC4BbGgDdDBCH@roundhouse.proxy.rlwy.net:24701';
 
 mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
