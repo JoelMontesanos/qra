@@ -79,12 +79,37 @@ qrCtl.renderEditQr = async (req,res)=>{
     res.render('qrs/edit_qr', {qr});
 };
 
-qrCtl.updateQr = async (req,res) => {
-    //destructuring
-    const {nombre,ine,auto,placas,casaVisita,motivo,validez} = req.body
-    await Qr.findByIdAndUpdate(req.params.id, {nombre,ine,auto,placas,casaVisita,motivo,validez});
-    req.flash('success_message','Qr actializado Satisfactoriamente');
-    res.redirect('/qr');
+qrCtl.updateQr = async (req, res) => {
+    try {
+        const { nombre, ine, auto, placas, casaVisita, motivo, validez } = req.body;
+
+        // Convert the new data to a JSON string
+        const qrData = JSON.stringify({ nombre, ine, auto, placas, casaVisita, motivo, validez });
+
+        // Use the same encryption logic as in createNewQr
+        const key = Buffer.from('12345678901234567890123456789012');
+        const iv = Buffer.from('abcdefghijklmnop');
+        const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
+        let encryptedData = cipher.update(qrData, 'utf8', 'base64');
+        encryptedData += cipher.final('base64');
+        const base64EncodedEncryptedData = encryptedData.toString('base64');
+
+        // Generate the new QR code URL
+        const qrCodeDataURL = await qrcode.toDataURL(base64EncodedEncryptedData);
+
+        // Update the document in the database with the new values and QR code URL
+        await Qr.findByIdAndUpdate(req.params.id, {
+            nombre, ine, auto, placas, casaVisita, motivo, validez,
+            qrCodeURL: qrCodeDataURL
+        });
+
+        req.flash('success_message', 'Qr actualizado satisfactoriamente');
+        res.redirect('/qr');
+    } catch (error) {
+        console.error('Error:', error);
+        req.flash('error_message', 'Error al actualizar el Código QR');
+        res.redirect('/qr');
+    }
 };
 
 qrCtl.deleteQr = async (req,res)=>{
